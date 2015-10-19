@@ -1,24 +1,26 @@
+%define  debug_package %{nil}
 %global pixmaptarget %{_datadir}/lorax/product/usr/share/anaconda/pixmaps
 %global pixmapsource %{_datadir}/anaconda/pixmaps/workstation
 
 Name:           korora-productimg-workstation
 Version:        23
-Release:        1%{?dist}
+Release:        1%{?dist}.1
 Summary:        Installer branding and configuration for Korora
 
 # Copyright and related rights waived via CC0
 # http://creativecommons.org/publicdomain/zero/1.0/
 License:        CC0
 
-Source0:        korora-workstation.css
-Source1:        korora-workstation.py
+Source0:        %{name}-%{version}.tar.gz
+#Source0:        korora-workstation.css
+#Source1:        korora-workstation.py
 
 BuildRequires:  cpio, findutils, xz
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel python
 
 Provides:       lorax-product-workstation
-Provides:       fedora-product-workstation
-Obsoletes:      fedora-product-workstation
+Provides:       fedora-productimg-workstation
+Obsoletes:      fedora-productimg-workstation
 Conflicts:      fedora-productimg-cloud, fedora-productimg-server
 
 %description
@@ -28,16 +30,18 @@ not useful on an installed system.
 
 %prep
 
+%setup
+
 %build
 
 %install
 
 install -m 755 -d %{buildroot}%{pixmaptarget}
 
-install -m 644 %{SOURCE0} %{buildroot}%{pixmaptarget}/../
+install -m 644 korora-workstation.css %{buildroot}%{pixmaptarget}/../
 
 mkdir -p %{buildroot}%{_datadir}/lorax/product/%{python3_sitearch}/pyanaconda/installclasses
-install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/lorax/product/%{python3_sitearch}/pyanaconda/installclasses
+install -m 644 korora-workstation.py %{buildroot}%{_datadir}/lorax/product/%{python3_sitearch}/pyanaconda/installclasses
 
 ln -sf %{pixmapsource}/sidebar-bg.png %{buildroot}%{pixmaptarget}
 ln -sf %{pixmapsource}/topbar-bg.png %{buildroot}%{pixmaptarget}
