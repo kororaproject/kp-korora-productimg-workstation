@@ -4,7 +4,7 @@
 
 Name:           korora-productimg-workstation
 Version:        23
-Release:        1%{?dist}.1
+Release:        1%{?dist}.2
 Summary:        Installer branding and configuration for Korora
 
 # Copyright and related rights waived via CC0
