@@ -3,8 +3,8 @@
 %global pixmapsource %{_datadir}/anaconda/pixmaps/workstation
 
 Name:           korora-productimg-workstation
-Version:        23
-Release:        1%{?dist}.2
+Version:        24
+Release:        1%{?dist}
 Summary:        Installer branding and configuration for Korora
 
 # Copyright and related rights waived via CC0
@@ -16,7 +16,7 @@ Source0:        %{name}-%{version}.tar.gz
 #Source1:        korora-workstation.py
 
 BuildRequires:  cpio, findutils, xz
-BuildRequires:  python3-devel python
+BuildRequires:  python3-devel
 
 Provides:       lorax-product-workstation
 Provides:       fedora-productimg-workstation
@@ -29,8 +29,6 @@ for use in a product.img file for Anaconda, the Korora installer. It is
 not useful on an installed system.
 
 %prep
-
-%setup
 
 %build
 
@@ -72,6 +70,9 @@ popd
 %{_datadir}/korora-productimg/product.img
 
 %changelog
+* Fri May 13 2016 Chris Smart <csmart@kororaproject.org> - 24-1
+- Korora 24 build
+
 * Mon Oct 19 2015 Chris Smart <csmart@kororaproject.org> - 23-1
 - Korora version of workstation, required to fix Anaconda missing buttons.
 
