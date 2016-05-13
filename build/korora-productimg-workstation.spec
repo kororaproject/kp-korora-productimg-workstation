@@ -16,7 +16,7 @@ Source0:        %{name}-%{version}.tar.gz
 #Source1:        korora-workstation.py
 
 BuildRequires:  cpio, findutils, xz
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel python
 
 Provides:       lorax-product-workstation
 Provides:       fedora-productimg-workstation
@@ -29,6 +29,8 @@ for use in a product.img file for Anaconda, the Korora installer. It is
 not useful on an installed system.
 
 %prep
+
+%setup
 
 %build
 
